@@ -36,22 +36,12 @@
         // event.data contains the message sent
         if (event.origin == "https://widget.karoo.com.br" || event.origin == "http://localhost:3000" || event.origin == "https://widget-karoo-qa.alterdatasoftware.com.br") {
             if (!event.data.open) {
-                iframe_element.style.width = "58px"
-                iframe_element.style.height = "56px"
-                iframe_element.style.bottom = "15px"
-                iframe_element.style.right = "15px"
+                iframe_element.setAttribute("style", "display: block; position: fixed; right: 15px; bottom: 15px; width: 58px; height: 56px; z-index: 99; border-radius: 8px;")
             } else {
                 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                    iframe_element.style.width = "100vw"
-                    iframe_element.style.height = "100vh"
-                    iframe_element.style.bottom = "0"
-                    iframe_element.style.right = "0"
-                    iframe_element.style.borderRadius = "0px"
-
+                    iframe_element.setAttribute("style", "display: block; position: fixed; right: 0; bottom: 0; width: 100vw; height: 100vh; z-index: 99; border-radius: 0px;")
                 } else {
-                    iframe_element.style.width = "450px"
-                    iframe_element.style.height = screenHeight > 768 ? "80%" : "90%"
-                    iframe_element.style.maxHeight = "600px"
+                    iframe_element.setAttribute("style", `display: block; position: fixed; right: 0; bottom: 0; width: 450px; height: ${screenHeight > 768 ? "80%" : "90%"}; z-index: 99; border-radius: 0px; max-height: 600px`)
                 }
             }
         } else {
